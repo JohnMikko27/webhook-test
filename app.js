@@ -10,10 +10,9 @@ app.post("/notion-webhook", express.json(), async (req, res) => {
     console.log("==========req.body=============")
     console.log(req.body)
     console.log("==========req.body=============")
-    let s = data && data.data && data.data.properties && data.data.properties["What's the issue?"]
-    console.log("================s==================")
-    console.log(s)
-    console.log("================s==================")
+    console.log("================data.data.properties[What’s the issue?]==================")
+    console.log(data.data.properties["What’s the issue?"])
+    console.log("================data.data.properties[What’s the issue?]==================")
     const issue = data.data.properties["What’s the issue?"] || data.content || "New bug submitted";
     console.log("=========issue=========")
     console.log(issue)
