@@ -1,0 +1,2 @@
+create a simple express or next js api route, deploy it
+then provide the deployed url to the notion webhook automation url
