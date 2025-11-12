@@ -22,6 +22,7 @@ app.post("/notion-webhook", express.json(), async (req, res) => {
         body: JSON.stringify({ content: `NEW ISSUE SUBMITTED 
 Bug: ${String(data.data.properties["What’s the issue?"].title[0].plain_text).slice(0, 1900)}
 Submitted at: ${data.data.properties['Submission time'].created_time}
+Link: ${data.data.url}
             ` })
     });
     res.status(r.ok ? 200 : 502).send(await r.text());
