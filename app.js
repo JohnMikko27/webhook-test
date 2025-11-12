@@ -21,7 +21,7 @@ app.post("/notion-webhook", express.json(), async (req, res) => {
     const r = await fetch("https://discord.com/api/webhooks/1437892798308159538/80EmXtMP42U9z6OvnC0DpOLYVw7AkvQU12gjqgtcZ7peO9Q7yx6FExFfB4BeHvdYTqS7", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: String(issue).slice(0, 1900) })
+        body: JSON.stringify({ content: String(data.data.properties["What’s the issue?"].title[0].plain_text).slice(0, 1900) })
     });
     console.log("===========r==========")
     console.log(r)
