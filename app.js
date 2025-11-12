@@ -7,16 +7,25 @@ app.get("/", (req, res) => {
 
 app.post("/notion-webhook", express.json(), async (req, res) => {
     const data = req.body || {};
+    console.log("==========req.body=============")
+    console.log(req.body)
+    console.log("==========req.body=============")
     const issue = data["What’s the issue?"] || data.content || "New bug submitted";
-    console.log("issue")
+    console.log("=========issue=========")
     console.log(issue)
+    console.log("=========issue=========")
+
     const r = await fetch("https://discord.com/api/webhooks/1437892798308159538/80EmXtMP42U9z6OvnC0DpOLYVw7AkvQU12gjqgtcZ7peO9Q7yx6FExFfB4BeHvdYTqS7", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content: String(issue).slice(0, 1900) })
     });
-    console.log("r")
+    console.log("===========r==========")
     console.log(r)
+    console.log("===========r==========")
+    console.log("=======r.json=======")
+    console.log(r.json())
+    console.log("=======r.json=======")
     res.status(r.ok ? 200 : 502).send(await r.text());
 });
 
