@@ -11,7 +11,7 @@ app.post("/notion-webhook", express.json(), async (req, res) => {
     console.log(req.body)
     console.log("==========req.body=============")
     console.log("==========data.url=============")
-    console.log(data.url)
+    console.log(data.data.url)
     console.log("==========data.url=============")
     console.log("================data.data.properties[What’s the issue?]==================")
     console.log(data.data.properties)
