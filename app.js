@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+require('dotenv').config();
+
 
 app.get("/", (req, res) => {
     res.send("hi webhooker")
@@ -7,12 +9,11 @@ app.get("/", (req, res) => {
 
 app.post("/notion-webhook", express.json(), async (req, res) => {
     const data = req.body || {};
-    const r = await fetch("https://discord.com/api/webhooks/1437892798308159538/80EmXtMP42U9z6OvnC0DpOLYVw7AkvQU12gjqgtcZ7peO9Q7yx6FExFfB4BeHvdYTqS7", {
+    const r = await fetch(process.env.DISCORD_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content: `NEW ISSUE SUBMITTED\n` +
                 `Bug: ${String(data.data.properties["What’s the issue?"].title[0].plain_text).slice(0, 1900)}\n` +
-                `Submitted at: ${data.data.properties['Submission time'].created_time}\n` +
                 `Link: ${data.data.url}
         ` })
     });
